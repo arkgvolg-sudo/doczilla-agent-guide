@@ -35,12 +35,20 @@
     --color-warning-soft: #FBEFE2;
     --color-warning-border: #F1DBBE;
 
-    --color-hero-bg: #15152A;
-    --color-hero-bg-2: #1B1B36;
-    --color-hero-text: #F4F4FA;
-    --color-hero-text-secondary: #ACACC6;
-    --color-hero-border: rgba(255,255,255,0.12);
-    --color-hero-surface: rgba(255,255,255,0.05);
+    --color-hero-bg: #F6F2FA;
+    --color-hero-bg-2: #F3F0F8;
+    --color-hero-text: #211D2B;
+    --color-hero-text-secondary: #6B6478;
+    --color-hero-border: #E7E2F0;
+    --color-hero-surface: #FFFFFF;
+
+    --color-doczilla-pink: #FF6B90;
+    --color-doczilla-pink-soft: rgba(255,107,144,0.14);
+    --color-doczilla-periwinkle: #C1BEDA;
+    --color-doczilla-grey: #E2E2E2;
+
+    --color-final-bg: #15152A;
+    --color-final-text: #F4F4FA;
 
     --radius-lg: 20px;
     --radius-md: 16px;
@@ -235,7 +243,7 @@
      ============================================================ */
   .hero{
     background:
-      radial-gradient(700px 420px at 82% -10%, rgba(124,116,255,0.20), transparent 60%),
+      linear-gradient(125deg, rgba(255,107,144,0.16) 0%, rgba(193,190,218,0.30) 45%, rgba(193,190,218,0.14) 75%, rgba(255,107,144,0.10) 100%),
       var(--color-hero-bg);
     color: var(--color-hero-text);
     padding: calc(var(--nav-height) + var(--space-8)) 0 var(--space-9);
@@ -276,7 +284,7 @@
   }
   .hero-badge .dot{
     width:7px; height:7px; border-radius:50%;
-    background: #8B85FF;
+    background: var(--color-doczilla-pink);
     flex-shrink:0;
   }
 
@@ -291,17 +299,18 @@
     border: 1px solid var(--color-hero-border);
     border-radius: var(--radius-lg);
     padding: var(--space-6);
-    transition: border-color .2s var(--ease), transform .2s var(--ease);
+    box-shadow: var(--shadow-sm);
+    transition: border-color .2s var(--ease), box-shadow .2s var(--ease), transform .2s var(--ease);
   }
-  .hero-card:hover{ border-color: rgba(139,133,255,0.5); }
+  .hero-card:hover{ border-color: rgba(255,107,144,0.45); box-shadow: var(--shadow-md); }
   .hero-card .icon-badge{
     width:40px; height:40px;
     border-radius: var(--radius-sm);
-    background: rgba(139,133,255,0.16);
+    background: var(--color-doczilla-pink-soft);
     display:flex; align-items:center; justify-content:center;
     margin-bottom: var(--space-4);
   }
-  .hero-card .icon-badge svg{ width:20px; height:20px; stroke:#B4AEFF; }
+  .hero-card .icon-badge svg{ width:20px; height:20px; stroke: var(--color-doczilla-pink); }
   .hero-card h3{ font-size: 18px; color: var(--color-hero-text); }
   .hero-card p{
     margin-top: var(--space-2);
@@ -324,8 +333,9 @@
     border: 1px solid var(--color-border);
   }
   .hero .media-placeholder{
-    background: rgba(255,255,255,0.03);
+    background: var(--color-hero-surface);
     border-color: var(--color-hero-border);
+    box-shadow: var(--shadow-sm);
   }
   .media-placeholder__bar{
     display:flex;
@@ -339,7 +349,7 @@
     width:9px; height:9px; border-radius:50%;
     background: var(--color-border);
   }
-  .hero .media-placeholder__bar span{ background: rgba(255,255,255,0.18); }
+  .hero .media-placeholder__bar span{ background: var(--color-hero-border); }
   .media-placeholder__frame{
     min-height: 260px;
     display:flex;
@@ -353,7 +363,7 @@
       repeating-linear-gradient(135deg, rgba(79,70,229,0.05) 0 10px, transparent 10px 20px);
   }
   .hero .media-placeholder__frame{
-    background: repeating-linear-gradient(135deg, rgba(139,133,255,0.06) 0 10px, transparent 10px 20px);
+    background: repeating-linear-gradient(135deg, rgba(255,107,144,0.06) 0 10px, transparent 10px 20px);
   }
   .media-placeholder__frame svg{ width:30px; height:30px; stroke: var(--color-text-muted); margin-bottom: 6px; }
   .hero .media-placeholder__frame svg{ stroke: var(--color-hero-text-secondary); }
@@ -367,7 +377,7 @@
     font-size: 13px;
     color: var(--color-text-muted);
   }
-  .hero .media-placeholder__hint{ color: rgba(172,172,198,0.7); }
+  .hero .media-placeholder__hint{ color: var(--color-text-muted); }
   .media-placeholder--compact .media-placeholder__frame{ min-height: 180px; padding: var(--space-6); }
   .media-placeholder--tall .media-placeholder__frame{ min-height: 340px; }
 
@@ -377,7 +387,6 @@
     background: var(--color-bg-alt);
     display:block;
   }
-  .hero .media-placeholder--filled .media-placeholder__frame{ background: rgba(255,255,255,0.02); }
   .media-placeholder__frame img{
     width: 100%;
     height: auto;
@@ -542,7 +551,36 @@
     display:grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-5);
+    align-items: stretch;
   }
+  .branch-slot{
+    display:flex;
+    position:relative;
+  }
+  .branch-slot > [data-branch]{ display:none; width:100%; }
+  .branch-slot > [data-branch].is-active{ display:flex; flex-direction:column; width:100%; }
+  .branch-media{
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow:hidden;
+  }
+  .branch-media__bar{
+    display:flex; align-items:center; gap:6px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink:0;
+  }
+  .branch-media__bar span{ width:9px; height:9px; border-radius:50%; background: var(--color-border); }
+  .branch-media__frame{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: var(--color-bg-alt);
+    padding: var(--space-4);
+  }
+  .branch-media__frame img{ width:100%; height:auto; display:block; border-radius: var(--radius-sm); }
   .branch-panel{
     background: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -1047,8 +1085,8 @@
     text-align:center;
   }
   .final-thesis{
-    background: var(--color-hero-bg);
-    color: var(--color-hero-text);
+    background: var(--color-final-bg);
+    color: var(--color-final-text);
     border-radius: var(--radius-lg);
     padding: var(--space-8) var(--space-7);
     text-align:center;
@@ -1299,37 +1337,55 @@
     </div>
 
     <div class="branch-panels reveal-group" data-tree="nda-tree">
-      <div class="branch-panel is-active reveal" data-branch="own" style="--i:0">
-        <div class="branch-panel__head">
-          <h4>Наша форма</h4>
-          <span class="badge badge--success">Юрист не подключается</span>
+      <div class="branch-slot reveal" style="--i:0">
+        <div class="branch-panel is-active" data-branch="own">
+          <div class="branch-panel__head">
+            <h4>Наша форма</h4>
+            <span class="badge badge--success">Юрист не подключается</span>
+          </div>
+          <ul class="branch-steps">
+            <li>Определить сторону: работник / подрядчик / клиент / физическое лицо</li>
+            <li>Определить, чью информацию защищаем</li>
+            <li>Подобрать типовой шаблон</li>
+            <li>Пользователь получает ссылку</li>
+            <li class="is-outcome no-task">Задача юристу не создаётся</li>
+          </ul>
+          <div class="template-chips">
+            <div class="template-chip"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-doc"/></svg>С работником</div>
+            <div class="template-chip"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-doc"/></svg>С физическим лицом</div>
+            <div class="template-chip"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-doc"/></svg>О конфиденциальности (на раскрытие)</div>
+            <div class="template-chip"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-doc"/></svg>О конфиденциальности (взаимное)</div>
+          </div>
         </div>
-        <ul class="branch-steps">
-          <li>Определить сторону: работник / подрядчик / клиент / физическое лицо</li>
-          <li>Определить, чью информацию защищаем</li>
-          <li>Подобрать типовой шаблон</li>
-          <li>Пользователь получает ссылку</li>
-          <li class="is-outcome no-task">Задача юристу не создаётся</li>
-        </ul>
-        <div class="template-chips">
-          <div class="template-chip"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-doc"/></svg>С работником</div>
-          <div class="template-chip"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-doc"/></svg>С физическим лицом</div>
-          <div class="template-chip"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-doc"/></svg>О конфиденциальности (на раскрытие)</div>
-          <div class="template-chip"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-doc"/></svg>О конфиденциальности (взаимное)</div>
+
+        <div class="branch-media" data-branch="other">
+          <div class="branch-media__bar"><span></span><span></span><span></span></div>
+          <div class="branch-media__frame">
+            <img src="assets/nda-other-example.png" alt="Пример: проверка формы NDA контрагента">
+          </div>
         </div>
       </div>
 
-      <div class="branch-panel reveal" data-branch="other" style="--i:1">
-        <div class="branch-panel__head">
-          <h4>Форма другой стороны</h4>
-          <span class="badge badge--warning">Создаётся задача</span>
+      <div class="branch-slot reveal" style="--i:1">
+        <div class="branch-media is-active" data-branch="own">
+          <div class="branch-media__bar"><span></span><span></span><span></span></div>
+          <div class="branch-media__frame">
+            <img src="assets/nda-own-example.png" alt="Пример: выдача NDA по нашей форме">
+          </div>
         </div>
-        <ul class="branch-steps">
-          <li>Пользователь прикладывает Word-файл</li>
-          <li>AI проверяет, что это действительно NDA</li>
-          <li>Собирает необходимые параметры</li>
-          <li class="is-outcome">Создаёт задачу юристу</li>
-        </ul>
+
+        <div class="branch-panel" data-branch="other">
+          <div class="branch-panel__head">
+            <h4>Форма другой стороны</h4>
+            <span class="badge badge--warning">Создаётся задача</span>
+          </div>
+          <ul class="branch-steps">
+            <li>Пользователь прикладывает Word-файл</li>
+            <li>AI проверяет, что это действительно NDA</li>
+            <li>Собирает необходимые параметры</li>
+            <li class="is-outcome">Создаёт задачу юристу</li>
+          </ul>
+        </div>
       </div>
     </div>
 
