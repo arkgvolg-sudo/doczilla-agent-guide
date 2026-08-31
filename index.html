@@ -11,21 +11,24 @@
      ТОКЕНЫ ТЕМЫ
      ============================================================ */
   :root{
-    --color-bg: #FAFAFA;
-    --color-bg-alt: #E8E8F3;
+    /* Нейтральные тона — тёплый кремовый, как на фирменном скриншоте Doczilla */
+    --color-bg: #FAF8F3;
+    --color-bg-alt: #F3ECE7;
     --color-surface: #FFFFFF;
-    --color-border: #E4E4EC;
-    --color-border-soft: #ECECF2;
+    --color-border: #E9E1D8;
+    --color-border-soft: #EFE8DF;
 
-    --color-text: #1C1D26;
-    --color-text-secondary: #5B5D6C;
-    --color-text-muted: #9395A3;
+    --color-text: #1C1A18;
+    --color-text-secondary: #625C56;
+    --color-text-muted: #96908A;
 
-    --color-accent: #4F46E5;
-    --color-accent-hover: #4238CB;
-    --color-accent-soft: #EEEDFC;
-    --color-accent-soft-border: #D9D7F7;
-    --color-accent-ink: #34309C;
+    /* Акцент — фирменный розовый Doczilla (снят со скриншота: rgb(219,63,96)),
+       слегка притемнён для контраста белого текста поверх кнопок/бейджей (AA) */
+    --color-accent: #D23A59;
+    --color-accent-hover: #B82C48;
+    --color-accent-soft: #FBEAEE;
+    --color-accent-soft-border: #F3CFD8;
+    --color-accent-ink: #A32A47;
 
     --color-success: #1C8A5D;
     --color-success-soft: #E7F5EE;
@@ -35,29 +38,29 @@
     --color-warning-soft: #FBEFE2;
     --color-warning-border: #F1DBBE;
 
-    --color-hero-bg: #F6F2FA;
-    --color-hero-bg-2: #F3F0F8;
-    --color-hero-text: #211D2B;
-    --color-hero-text-secondary: #6B6478;
-    --color-hero-border: #E7E2F0;
+    --color-hero-bg: #F8F6EF;
+    --color-hero-bg-2: #F5F1E7;
+    --color-hero-text: #1C1A18;
+    --color-hero-text-secondary: #6B655D;
+    --color-hero-border: #EAE2D6;
     --color-hero-surface: #FFFFFF;
 
-    --color-doczilla-pink: #FF6B90;
-    --color-doczilla-pink-soft: rgba(255,107,144,0.14);
-    --color-doczilla-periwinkle: #C1BEDA;
+    --color-doczilla-pink: #DB3F60;
+    --color-doczilla-pink-soft: rgba(219,63,96,0.12);
+    --color-doczilla-cream: #F3ECE7;
     --color-doczilla-grey: #E2E2E2;
 
-    --color-final-bg: #15152A;
-    --color-final-text: #F4F4FA;
+    --color-final-bg: #1B1613;
+    --color-final-text: #F5F2EA;
 
     --radius-lg: 20px;
     --radius-md: 16px;
     --radius-sm: 10px;
     --radius-xs: 6px;
 
-    --shadow-sm: 0 1px 2px rgba(21,21,42,0.05), 0 1px 1px rgba(21,21,42,0.04);
-    --shadow-md: 0 12px 32px rgba(21,21,42,0.08);
-    --shadow-lg: 0 24px 64px rgba(21,21,42,0.14);
+    --shadow-sm: 0 1px 2px rgba(28,22,15,0.05), 0 1px 1px rgba(28,22,15,0.04);
+    --shadow-md: 0 12px 32px rgba(28,22,15,0.08);
+    --shadow-lg: 0 24px 64px rgba(28,22,15,0.14);
 
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "SF Pro Text", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
     --font-mono: "SF Mono", "Cascadia Code", Consolas, "Liberation Mono", monospace;
@@ -180,7 +183,7 @@
     display:flex;
     align-items:center;
     z-index: 500;
-    background: rgba(250,250,250,0.78);
+    background: rgba(250,248,243,0.82);
     backdrop-filter: blur(10px) saturate(140%);
     -webkit-backdrop-filter: blur(10px) saturate(140%);
     border-bottom: 1px solid transparent;
@@ -243,7 +246,7 @@
      ============================================================ */
   .hero{
     background:
-      linear-gradient(125deg, rgba(255,107,144,0.16) 0%, rgba(193,190,218,0.30) 45%, rgba(193,190,218,0.14) 75%, rgba(255,107,144,0.10) 100%),
+      linear-gradient(125deg, rgba(219,63,96,0.10) 0%, rgba(219,63,96,0.02) 45%, rgba(219,63,96,0.02) 75%, rgba(219,63,96,0.08) 100%),
       var(--color-hero-bg);
     color: var(--color-hero-text);
     padding: calc(var(--nav-height) + var(--space-8)) 0 var(--space-9);
@@ -302,7 +305,7 @@
     box-shadow: var(--shadow-sm);
     transition: border-color .2s var(--ease), box-shadow .2s var(--ease), transform .2s var(--ease);
   }
-  .hero-card:hover{ border-color: rgba(255,107,144,0.45); box-shadow: var(--shadow-md); }
+  .hero-card:hover{ border-color: rgba(219,63,96,0.45); box-shadow: var(--shadow-md); }
   .hero-card .icon-badge{
     width:40px; height:40px;
     border-radius: var(--radius-sm);
@@ -360,10 +363,10 @@
     padding: var(--space-7);
     text-align:center;
     background:
-      repeating-linear-gradient(135deg, rgba(79,70,229,0.05) 0 10px, transparent 10px 20px);
+      repeating-linear-gradient(135deg, rgba(219,63,96,0.05) 0 10px, transparent 10px 20px);
   }
   .hero .media-placeholder__frame{
-    background: repeating-linear-gradient(135deg, rgba(255,107,144,0.06) 0 10px, transparent 10px 20px);
+    background: repeating-linear-gradient(135deg, rgba(219,63,96,0.06) 0 10px, transparent 10px 20px);
   }
   .media-placeholder__frame svg{ width:30px; height:30px; stroke: var(--color-text-muted); margin-bottom: 6px; }
   .hero .media-placeholder__frame svg{ stroke: var(--color-hero-text-secondary); }
@@ -395,6 +398,24 @@
     object-position: top center;
     display:block;
   }
+  /* Аккуратное состояние, если файл скриншота ещё не добавлен / не загрузился */
+  .media-placeholder__frame.is-missing{
+    min-height: 220px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap: var(--space-2);
+    padding: var(--space-7);
+    text-align:center;
+    background: repeating-linear-gradient(135deg, rgba(219,63,96,0.05) 0 10px, transparent 10px 20px);
+  }
+  .hero .media-placeholder__frame.is-missing{
+    background: repeating-linear-gradient(135deg, rgba(219,63,96,0.06) 0 10px, transparent 10px 20px);
+  }
+  .media-placeholder__frame.is-missing svg{ width:28px; height:28px; stroke: var(--color-text-muted); }
+  .media-placeholder__frame.is-missing .media-placeholder__label{ font-size:14px; font-weight:600; color: var(--color-text-secondary); }
+  .media-placeholder__frame.is-missing .media-placeholder__hint{ font-size:13px; color: var(--color-text-muted); max-width: 380px; }
 
   /* ============================================================
      КАРТОЧКИ / БЕЙДЖИ / CALLOUT
@@ -529,9 +550,9 @@
     animation: toggle-invite 1.7s ease-out infinite;
   }
   @keyframes toggle-invite{
-    0%   { box-shadow: 0 0 0 0 rgba(255,107,144,0.55); background: rgba(255,107,144,0.12); }
-    70%  { box-shadow: 0 0 0 12px rgba(255,107,144,0); background: transparent; }
-    100% { box-shadow: 0 0 0 0 rgba(255,107,144,0); background: transparent; }
+    0%   { box-shadow: 0 0 0 0 rgba(219,63,96,0.55); background: rgba(219,63,96,0.12); }
+    70%  { box-shadow: 0 0 0 12px rgba(219,63,96,0); background: transparent; }
+    100% { box-shadow: 0 0 0 0 rgba(219,63,96,0); background: transparent; }
   }
 
   /* ============================================================
@@ -589,6 +610,16 @@
     padding: var(--space-4);
   }
   .branch-media__frame img{ width:100%; height:auto; display:block; border-radius: var(--radius-sm); }
+  .branch-media__frame.is-missing{
+    flex-direction:column;
+    gap: var(--space-2);
+    text-align:center;
+    min-height: 220px;
+    background: repeating-linear-gradient(135deg, rgba(219,63,96,0.05) 0 10px, transparent 10px 20px);
+  }
+  .branch-media__frame.is-missing svg{ width:26px; height:26px; stroke: var(--color-text-muted); }
+  .branch-media__frame.is-missing .media-placeholder__label{ font-size:14px; font-weight:600; color: var(--color-text-secondary); }
+  .branch-media__frame.is-missing .media-placeholder__hint{ font-size:13px; color: var(--color-text-muted); max-width: 300px; padding: 0 var(--space-4); }
   .branch-panel{
     background: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -810,7 +841,7 @@
     color: var(--color-text);
   }
   .task-mock__block--user{ background: var(--color-surface); border: 1px dashed var(--color-border); }
-  .task-mock__block--ai{ background: rgba(79,70,229,0.10); border: 1px solid rgba(79,70,229,0.22); border-left: 3px solid var(--color-accent); }
+  .task-mock__block--ai{ background: var(--color-accent-soft); border: 1px solid var(--color-accent-soft-border); border-left: 3px solid var(--color-accent); }
   .task-mock__block--ai .p-label{ color: var(--color-accent-ink); }
 
   /* ============================================================
@@ -1285,7 +1316,7 @@
   .lightbox{
     position: fixed;
     inset: 0;
-    background: rgba(15,15,26,0.84);
+    background: rgba(20,17,14,0.84);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -2243,13 +2274,31 @@
   if(!reduceMotion && 'IntersectionObserver' in window){
     var revealObserver = new IntersectionObserver(function(entries, obs){
       entries.forEach(function(entry){
-        if(entry.isIntersecting){
+        /* entry.boundingClientRect.top < 0 — элемент уже выше вьюпорта (проскочили
+           резким скроллом/переходом по якорю) — тоже считаем показанным, чтобы
+           контент не оставался невидимым навсегда. */
+        if(entry.isIntersecting || entry.boundingClientRect.top < 0){
           entry.target.classList.add('is-visible');
           obs.unobserve(entry.target);
         }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
     document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
+
+    /* Страховка: сразу после загрузки и при переходе по якорю принудительно
+       показываем всё, что уже попало в область экрана — на случай, если
+       наблюдатель почему-то не успел сработать. */
+    function revealAlreadyPassed(){
+      document.querySelectorAll('.reveal:not(.is-visible)').forEach(function(el){
+        if(el.getBoundingClientRect().top < window.innerHeight){
+          el.classList.add('is-visible');
+          revealObserver.unobserve(el);
+        }
+      });
+    }
+    window.addEventListener('load', revealAlreadyPassed);
+    window.addEventListener('hashchange', function(){ setTimeout(revealAlreadyPassed, 400); });
+    window.addEventListener('pageshow', revealAlreadyPassed);
   } else {
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
   }
@@ -2296,7 +2345,36 @@
     document.body.style.overflow = '';
   }
 
+  /* -------- Аккуратный fallback для отсутствующих скриншотов -------- */
+  function markImageMissing(img){
+    var frame = img.closest('.media-placeholder__frame') || img.closest('.branch-media__frame');
+    if(!frame || frame.classList.contains('is-missing')) return;
+    frame.classList.add('is-missing');
+    var wrap = frame.closest('.media-placeholder');
+    if(wrap) wrap.classList.remove('media-placeholder--filled');
+    var hint = img.getAttribute('alt') || 'Скриншот';
+    img.remove();
+    var icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    icon.setAttribute('viewBox', '0 0 24 24');
+    icon.setAttribute('fill', 'none');
+    icon.setAttribute('stroke-width', '1.5');
+    icon.innerHTML = '<use href="#icon-image"></use>';
+    var label = document.createElement('span');
+    label.className = 'media-placeholder__label';
+    label.textContent = 'Скриншот появится здесь';
+    var sub = document.createElement('span');
+    sub.className = 'media-placeholder__hint';
+    sub.textContent = hint;
+    frame.appendChild(icon);
+    frame.appendChild(label);
+    frame.appendChild(sub);
+  }
+
   document.querySelectorAll('.media-placeholder__frame img, .branch-media__frame img').forEach(function(img){
+    img.addEventListener('error', function(){ markImageMissing(img); });
+    /* Изображение уже могло не загрузиться до навешивания обработчика */
+    if(img.complete && img.naturalWidth === 0){ markImageMissing(img); return; }
+
     img.setAttribute('tabindex', '0');
     img.setAttribute('role', 'button');
     img.setAttribute('aria-label', 'Увеличить изображение');
