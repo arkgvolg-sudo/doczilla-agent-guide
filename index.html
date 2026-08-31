@@ -208,13 +208,11 @@
     flex-shrink:0;
   }
   .brand-mark{
-    width:28px; height:28px;
-    border-radius: 8px;
-    background: var(--color-accent);
+    width:26px; height:29px;
     display:flex; align-items:center; justify-content:center;
     flex-shrink:0;
   }
-  .brand-mark svg{ width:16px; height:16px; stroke:#fff; }
+  .brand-mark img{ width:100%; height:100%; object-fit:contain; display:block; }
 
   .nav-links{
     display:flex;
@@ -667,6 +665,38 @@
   .branch-steps li.is-outcome::before{ border-color: var(--color-accent); background: var(--color-accent); }
   .branch-steps li.is-outcome.no-task::before{ border-color: var(--color-text-muted); background: var(--color-text-muted); }
 
+  /* Равномерное распределение шагов по всей высоте карточки (когда соседняя
+     колонка в гриде выше и растягивает панель за счёт align-items:stretch) */
+  .branch-steps--fill{
+    flex: 1;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+  }
+  .branch-steps--fill li{ padding-bottom: 0; }
+
+  /* Плавное появление шагов по одному сверху вниз — при скролле в область
+     видимости и при переключении вкладок «Наша форма» / «Форма контрагента» */
+  .branch-steps--animated li{
+    transition: opacity .4s var(--ease), transform .4s var(--ease);
+  }
+  .branch-steps--animated.is-animating li{
+    opacity: 0;
+    transform: translateY(8px);
+    transition: none;
+  }
+  .branch-steps--animated.is-animating.is-playing li{
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity .45s var(--ease), transform .45s var(--ease);
+  }
+  .branch-steps--animated.is-animating.is-playing li:nth-child(1){ transition-delay: .05s; }
+  .branch-steps--animated.is-animating.is-playing li:nth-child(2){ transition-delay: .15s; }
+  .branch-steps--animated.is-animating.is-playing li:nth-child(3){ transition-delay: .25s; }
+  .branch-steps--animated.is-animating.is-playing li:nth-child(4){ transition-delay: .35s; }
+  .branch-steps--animated.is-animating.is-playing li:nth-child(5){ transition-delay: .45s; }
+  .branch-steps--animated.is-animating.is-playing li:nth-child(6){ transition-delay: .55s; }
+
   .template-chips{
     margin-top: var(--space-5);
     display:grid;
@@ -733,7 +763,7 @@
     border: 1px solid var(--color-border);
   }
   .fork-branch--positive{ background: var(--color-success-soft); border-color: var(--color-success-border); }
-  .fork-branch--negative{ background: var(--color-bg-alt); }
+  .fork-branch--negative{ background: var(--color-accent-soft); border-color: var(--color-accent-soft-border); }
   .fork-branch__title{
     font-size:14px; font-weight:700;
     margin-bottom: var(--space-3);
@@ -742,8 +772,8 @@
   .fork-branch__title svg{ width:16px; height:16px; }
   .fork-branch--positive .fork-branch__title{ color: var(--color-success); }
   .fork-branch--positive .fork-branch__title svg{ stroke: var(--color-success); }
-  .fork-branch--negative .fork-branch__title{ color: var(--color-text-secondary); }
-  .fork-branch--negative .fork-branch__title svg{ stroke: var(--color-text-secondary); }
+  .fork-branch--negative .fork-branch__title{ color: var(--color-accent-ink); }
+  .fork-branch--negative .fork-branch__title svg{ stroke: var(--color-accent-ink); }
   .fork-branch p{ font-size: 14.5px; color: var(--color-text-secondary); line-height:1.5; }
 
   .mini-fork{
@@ -788,14 +818,14 @@
   }
   .task-mock__top{
     padding: var(--space-5) var(--space-6);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-accent-soft-border);
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap: var(--space-4);
-    background: var(--color-accent);
+    background: var(--color-accent-soft);
   }
-  .task-mock__top .task-mock__title{ color:#fff; }
+  .task-mock__top .task-mock__title{ color: var(--color-accent-ink); }
   .task-mock__title{ font-size:16px; font-weight:700; }
   .task-mock__due{
     font-family: var(--font-mono);
@@ -1435,7 +1465,7 @@
 <nav class="topnav" id="topnav">
   <div class="container">
     <div class="brand">
-      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><use href="#icon-logo"/></svg></span>
+      <span class="brand-mark"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAREAAAEyCAYAAADdrOQWAAAPXklEQVR42u3dv1MbRx+A8d0TcacZpURNqJTSMkd6uZcm9qRSmtgFRxlj/gChPh6bUjSGImmDhz/ASpcZOPnc0kRurFbv0HK7b/GCh/BikO727vb2ns9MZvLDMbAhz3x3dVpku91eE6iEKIqmrAJMk77va5aherTWUynlXAjx5Q+t9SchxFwpNb38e1EURXNWC0QEqYcYIcRcShkppT4ppSICAyICE+ZCiOh6XKIoGrMsRAQwMblEWuu/LsMSsSREBEg7sYwvozImKkQESGt6Oam8u4zKlCUhIkCq7Y+UcnxxcfGOMxUiApiYUsZxHB8SFCICEBQiAlgXlCFnKEQESCvSWu9xKEtEABMO4jje42VjIgIYmU4mk8kBS0FEgDSmWusDpdQhWx0iApjY6nAQS0QAYkJEAGJCRABiAiICEBMiAhj/n0DKNxcXF3vEJBmPJUDVaa1f1Gq19+vr689YDSYRIK2pEGI7DMMjloJJBEhiTQjxp+/7b/lxKkQESONZrVb7sL6+PmAp2M4Aqbc4cRw/5uCVSQRIvMWp1Wr/MJUwiQBGphLP856enJxELAWTCJBoKlFKcVbCJAKYmUo4K2ESAVJNJZyVMIkAphzFcbxdxamESQQw40mtVnu/sbHRISIAEm9vtNbvq7a9YTsDsL1hEgFs3d5U4f03RATIcHtTq9U++L7/hIgASKohhPjT5XMSIgLkQEq5u7Gx8drJr42DVSBXURzHT106cGUSAfLVdu3AlYgA+VtzKSREBCguJB9++OGHNhEBkFRDKfXe9/1fiAiAxCERQhyUOSREBLBDaUNCRACLQlLGh9KICGARKeVu2UJCRAALQ1KmrQ0RASzd2pQlJEQEICREBHDYG9sfSCMigN0aSimrH5EnIkAJQmLze22ICFAOV2/aaxARAKlCQkQApNH2ff8tEQGQxjObnmolIkAJXT7V+oSIAEjjrQ2v2BARoLwaNrxiQ0SAclur1WqFHrTyIyMcEQSBCIKAhcjIbDYTOzs74uzszMrPT2u9PZlM3jCJIJGdnR0CknFAgiCwNiBCCCGlfL2xsdEhIljaYDAQ/X6fhcg4ILPZzPrPVWv9tojzESJS8oD0ej0WgoBcWavVan8SERAQApJGZ319/QURAQEhIIlJKQd5Pj9CREqkXq+L0WhEQAjIfRp5bmuISMkC4vs+i0FAFtHe2Nh4TUTwr4C0Wi0Wg4AsTGv9Io+XfYkIASEgDgbkWkgyf9mXiBAQAuJoQC6teZ73gohUULPZFH/88QcBISCpSSkHWd4YT0QsDchoNBKrq6ssBgExQimV2SErESEgBKQaMnsIjYgQEAJSEZcPoTWICAEBAUmqsbKyYvxuViJCQAhIhWTx7AgRISAEpHohMTqNEBECQkCqp2PypngiQkAISDW9NnXISkQK0Gq1CAgBKZqxJ1mJCAEhIBUlpfzVxDRCRAoISL1eZzEIiA0aJqYRIkJACAjTSKpphIgQECecnZ0RkIKmESKSsV6vR0ByCMjW1hYBKWgaISIZB2QwGBCQHAJyfn7OYhQ0jRCRjAMCAuL6NEJECAgBQapphIgQEAKCVNMIETEoCAICQkDKPo08IyIFBiQIAhaCgJSa53m/EBECQkCQmNa6vex9I0SEgBAQ3AzJUntyIkJACAhu6izzA8GJCAEhIPj/MCxxwEpECIiVwjAkIAVa5uVeIkJArHN8fExAiteo1WodIkJAShmQ4XDIQtjh14WmFt/3NWvlrsFgIHq9HgFBInEcfxtF0ZxJhIAQECSyyPtpiAgBISD4+lZFynufYCUiBISA4C5r9z3BSkQICAHBnZRST4gIASEgyGxLQ0QICAHBfRp3bWmISMnV63UxGo0ICArb0hARBwLi+z4BQdZbmh+JiKMBabVaBAR5WGu32+3b/sEKa0NAsra/vy/29/f5D1dynud1hBARkwgBISAwuqUhIgSEgGBRnduuByAiBISAYGG3XQ9ARAgIAcHCtNZEpGyazSYBgTVuOxchIgSEgGAZa48ePfqOiJQoIKurqwQEtk0jj4kIASEgSKNNRAgIAUGaSeRHIkJACAjSWLv+vAgRISAEBEtbWVlpExECQkCQmFKKiBAQAoLkpJQdIkJACAjSeEhECAgBQRpfDleJCAEhIEjk6nCViBAQAoJErg5XudmMgHzV2dmZ+Pz5s+h2u1Z/nrPZTIRhyDdYzqSUD4XgB3oTkJKbzWYiCAIxm81YjPxFYRg+YjtDQAgIkloTgjMRAkJAkFyj3W43iEiGWq2W+P333wkIAXF6GiEiGQZkNBqJer3OYhAQZ3me1yYiBISAgEmEgBAQFENK+R0RISAEBGl8S0QICAFBGg+JCAEhIEiDl3gJCAEBESlMr9cjIASk8ngDXoqADAYDFoKAVB6TCAEhICAiBISAgIgQEAJCQIgIAQEBISIgIAQERISAEBDkiZd479Dv98XOzg4LQUBARJYXBIEIgoCFICBgO0NACAiICAEhICAiBISAEBAiQkBAQEBECAgBAREhIAQERISAEBAQEQICAoKqRoSAEBAQEQJCQEBECAgBAREhIASEgBARAgICAiJCQAgIiAgBISAoJ2fvExkMBqLX6/FfmICASYSAEBAQEQJCQMB2pgx83xdCCHF8fFyKz/f7778XrVaLgKDMIun7vmYd8tdsNsVoNBKrq6sEBGU25j6RgvT7fQICF/yHiBQ0hfT7fQKC0tNaR0SkAC9fviQgcMWUiOSs2+2KTqdDQOAEz/OISN62trYICJwRx/E/RCRHQRBYe5hKQJDEhw8fPhGRnDSbTWvfx0NAkFAkBLe952Zzc5OAwDWfiEhOOp2OlY/iExCkobVmEsnLzs4OAYFzpJREJA82HqYSEJgQx/GUiGSs2Wxat40hIDBkHkURk0jWNjc3rZpCCAgMiq7+hIhkpNVqWTWFEBCYpLX+SEQy9urVKwICZ0kpx0QkQ91u15ptDAFBFuI4ZjuTlWazac37YwgIMtrKTKMomhKRjNhymEpAkOFW5uP1vyYihqcQGw5TCQgynkTGRCQjv/32GwGB85RSRCQL3W638JvbCQhy8OUhMyJieBtT9GEqAUFO/rr5N4iIoSmkyMNUAoK8aK2PiEgGU0iRlw0REOTp5nkIETGgyMuGCAhynkL+9XwIETG0jSnqJV0Cgrxdf9SdiBhS1GEqAUFBETkkIgYVddkQAUFB5qenp0wiphR1mEpAUKCjr/0DIpJAEYepBAQFe0dEDCni5nYCgqK3MmEYMomYkvfN7QQENm9liMiS+v1+roepBAS2b2WEEGKF9VlMs9kUP//8MwFBpWitp5PJhEnEhDwvGyIgsMXXHjAjIgmmkLwOUwkILIvI4X2/hu3MAkajEQFBJbcyYRgyiaSV19v8CQgsNFzkFxGRe7Yxebw/hoDARre97Z+ILCmPw1QCAksd3Pa2fyKy5BSS9WEqAYGtFjlQvcLB6ldkfXM7AYGtFj1QZRK5Q9Y3txMQWG64zC8mIjfU6/VMD1MJCGyfQpRSR0QkhSzfH0NAYDsp5TiKojkRSSjLy4YICMogjuPhsv8OEbkmq8uGCAhKYuGXdYnILbK6uZ2AwOUphIhck8Vh6vn5OQGB01MIEbmUxc3t5+fnYmtri4DA6SmEiIhsDlOvAnJ2dsZ3J5yeQoiIMH+YSkBQpSmk8hExfXM7AUHVppDKR8Tkze0EBFWcQiodEZNPphIQVHUKqWxETN7cTkBQ5SmkshExddkQAUFZSSmHJqYQISp4n4ipy4YICMpKaz2N4/jA1O9XuUnExM3tBAQlZ2wKqVxETNzcTkBQ9ilkMpkcmPw9KxMREze3ExCUnVLqsenfszIRSXuYSkDggAOT25grlThYTXuYSkDgwjZGKTXM4veuxCSS5uZ2AgJHDLOYQioRkTQ3txMQuLKNMX2YWpntTJqb2wkIHNnGzLPaxlRiEkn6/hgCAld4npfZNsb5iCS9bIiAwCHj09PTN1l/EGe3M0kuGyIgcGgbM1VKPc9l2nFxAZPc3E5A4JjMtzFOR2TZw1QCAsdk+mqM89uZZW9uJyBwcBszzPNjOjWJNJtN0e/3CQgqSyn1NK9tjJMR2dzcFPV6nYCgki4vGory/rjORMT3/YUPUwkIHHR0enq6W8QHduZMZHd3sfUjIHDN5TnIdlEf34lJZNEnUwkIXKSUepz3OYhTEVn05nYCAhdJKbeLDIgTEVnksiECAkcDMszjsXanI7LIZUMEBI4aF3WQelOpD1bvu7mdgMBFeb4vxulJ5L6b2wkIHA7I46LPQUofkftubicgcFURT6Q6GZG7XtIlIHCV53nPi3gi1bmI3PX+GAICV0kphycnJwdWxq1si/ny5UsCgsoFxJZXYkofkW63KzqdDgEBASEiydx2mEpA4LBD2wNSqojcdtkQAYHLAQnD8FkZPtFSROS2m9sJCAgIEVnYzZvbCQgICBFZ2M2b2wkICAgRWcr1w1QCAgJCRJZy/TCVgMBhe2UNiNURuflkKgGBi6SUwzAMX5T5a7A2Itdvbh8OhwQETgakDM+B3MfK+0RardaXw9ThcCiOj4/5joNTPM97but7YZyIyKtXrwgInKS1nnue9/Tk5GTsytdkXUSuLhsiIHAwIFOl1OPJZDJ1aqqy6ZO5umyIgMBBkW03kjkZkZ9++ina398nIHDNYRzHTgZECCGk7/vallFPCDGWUj7jew7O/A8m5bYNP9YhSysWLfZUCEFA4ISrA9TT09Ox61+rTQerHb714IhIKfXUtQPUMkQEcMFe2Z9AJSJAQdsXKeXzMAyPqva1ExEgvbFS6rmrr74QESBDVXj1hYgA2Wxfpp7nPa/Cqy/38fh2AJa2p5R6RECYRACmDyYRIB9SyiHTB5MIkMQ4juNtG3+QNhEB7N66zD3PG1b9lRciAiSzp5TanUwmc5aCiABLbV0u7z0dsxREBFhm68KrLkQESBSPued5e2EY7rIaRARYOh5xHL/h3IOIAMSDiADEg4gAxIOIAA4Za60PlVJHxIOIAEvFg+c8iAiQaMtycXFxUNWbxYgIkHDqEP97PH3MloWIAMtOHW+iKCIcRARYLBxSykMp5VEYhmNWhIgAhIOIAJmEYyqlfEc4iAiwzLQRaa3fPXjw4Ojvv/+esipEBLjPWAjxUUp5FMdxxOEoEQHunTSklH8JIcYXFxdEg4gAdwdDCPFRax09ePBgzPaEiABfi8VUCBFprT9KKafffPNNRDCq7b87RDJj5Y37VgAAAABJRU5ErkJggg==" alt="Doczilla"></span>
       AI-агент ЮД
     </div>
     <div class="nav-links" id="navLinks">
@@ -1566,7 +1596,7 @@
             <h4>Наша форма</h4>
             <span class="badge badge--success">Юрист не подключается</span>
           </div>
-          <ul class="branch-steps">
+          <ul class="branch-steps branch-steps--animated">
             <li>Определить сторону: работник / подрядчик / клиент / физическое лицо</li>
             <li>Определить, чью информацию защищаем</li>
             <li>Подобрать типовой шаблон</li>
@@ -1602,7 +1632,7 @@
             <h4>Форма другой стороны</h4>
             <span class="badge badge--warning">Создаётся задача</span>
           </div>
-          <ul class="branch-steps">
+          <ul class="branch-steps branch-steps--animated branch-steps--fill">
             <li>Пользователь прикладывает Word-файл</li>
             <li>AI проверяет, что это действительно NDA</li>
             <li>Собирает необходимые параметры</li>
@@ -1735,7 +1765,7 @@
           <div class="branch-panel__head">
             <h4>Подготовить договор с нуля</h4>
           </div>
-          <ul class="branch-steps">
+          <ul class="branch-steps branch-steps--animated branch-steps--fill">
             <li>Пользователь описывает, какой договор нужен</li>
             <li>AI ищет подходящий опубликованный шаблон</li>
             <li class="is-outcome no-task">Шаблон найден → выдаёт ссылку, юрист не подключается</li>
@@ -1764,7 +1794,7 @@
             <h4>Проверить форму контрагента</h4>
             <span class="badge badge--warning">Подробнее ниже</span>
           </div>
-          <ul class="branch-steps">
+          <ul class="branch-steps branch-steps--animated branch-steps--fill">
             <li>Пользователь загружает договор контрагента</li>
             <li>AI собирает параметры проверки</li>
             <li class="is-outcome">Определяет ответственного юриста и создаёт задачу</li>
@@ -1787,10 +1817,12 @@
         <span class="sub-block-tag">Ветка «Проверить форму контрагента»</span>
       </div>
 
-      <div class="step-cards reveal-group" style="grid-template-columns: repeat(2,1fr); max-width:640px;">
+      <div class="step-cards reveal-group" style="grid-template-columns: repeat(2,1fr);">
         <div class="step-card reveal" style="--i:0"><span class="num">1</span><p>Пользователь загружает договор</p></div>
         <div class="step-card reveal" style="--i:1"><span class="num">2</span><p>AI спрашивает, можно ли вносить изменения</p></div>
       </div>
+
+      <div class="flow-connector reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><use href="#icon-arrow-down"/></svg></div>
 
       <div class="fork reveal-group">
         <div class="fork-branch fork-branch--positive reveal" style="--i:0">
@@ -1807,13 +1839,15 @@
         </div>
       </div>
 
-      <div class="checklist-row reveal-group">
-        <div class="card reveal" style="--i:0"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-doc"/></svg>Определяет тип документа</div>
-        <div class="card reveal" style="--i:1"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-list-check"/></svg>Определяет ответственного юриста</div>
-        <div class="card reveal" style="--i:2"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-check"/></svg>Создаёт задачу «Проверка договора»</div>
+      <div class="flow-connector reveal" style="margin-top: var(--space-5)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><use href="#icon-arrow-down"/></svg></div>
+
+      <div class="step-cards reveal-group">
+        <div class="step-card reveal" style="--i:0"><span class="num">3</span><p>Определяет тип документа</p></div>
+        <div class="step-card reveal" style="--i:1"><span class="num">4</span><p>Определяет ответственного юриста</p></div>
+        <div class="step-card reveal" style="--i:2"><span class="num">5</span><p>Создаёт задачу «Проверка договора»</p></div>
       </div>
 
-      <p class="mock-label reveal" style="margin-top: var(--space-7)">Макет постановки задачи</p>
+      <p class="mock-label reveal" style="margin-top: var(--space-3)">Макет постановки задачи</p>
       <div class="task-detail reveal">
         <div class="task-detail__top">
           <span class="status-pill">
@@ -2221,6 +2255,22 @@
   "use strict";
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* -------- Плавное появление шагов (кружочков) в branch-steps -------- */
+  function playStepAnimation(root){
+    if(reduceMotion || !root) return;
+    var lists = root.matches && root.matches('.branch-steps--animated')
+      ? [root]
+      : root.querySelectorAll('.branch-steps--animated');
+    lists.forEach(function(ul){
+      ul.classList.remove('is-playing');
+      ul.classList.add('is-animating');
+      void ul.offsetWidth; /* форсируем reflow, чтобы анимация могла перезапуститься */
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){ ul.classList.add('is-playing'); });
+      });
+    });
+  }
+
   /* -------- Sticky nav shadow -------- */
   var topnav = document.getElementById('topnav');
   var toTop = document.getElementById('toTop');
@@ -2279,6 +2329,7 @@
            контент не оставался невидимым навсегда. */
         if(entry.isIntersecting || entry.boundingClientRect.top < 0){
           entry.target.classList.add('is-visible');
+          playStepAnimation(entry.target);
           obs.unobserve(entry.target);
         }
       });
@@ -2292,6 +2343,7 @@
       document.querySelectorAll('.reveal:not(.is-visible)').forEach(function(el){
         if(el.getBoundingClientRect().top < window.innerHeight){
           el.classList.add('is-visible');
+          playStepAnimation(el);
           revealObserver.unobserve(el);
         }
       });
@@ -2319,7 +2371,9 @@
 
         panelsWraps.forEach(function(wrap){
           wrap.querySelectorAll('[data-branch]').forEach(function(panel){
-            panel.classList.toggle('is-active', panel.dataset.branch === branch);
+            var active = panel.dataset.branch === branch;
+            panel.classList.toggle('is-active', active);
+            if(active) playStepAnimation(panel);
           });
         });
       });
