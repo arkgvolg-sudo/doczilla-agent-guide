@@ -665,6 +665,13 @@
     gap: var(--space-4);
     margin-bottom: var(--space-6);
   }
+  .flow-connector{
+    display:flex;
+    justify-content:center;
+    margin: calc(-1 * var(--space-3)) 0 var(--space-5);
+    color: var(--color-text-muted);
+  }
+  .flow-connector svg{ width:16px; height:16px; }
   .step-card{
     background: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -771,15 +778,15 @@
   .task-mock__params{
     display:grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-3);
+    gap: var(--space-2);
   }
   .task-mock__param{
-    padding: var(--space-4);
+    padding: var(--space-3);
     background: var(--color-bg-alt);
     border-radius: var(--radius-sm);
-    font-size: 14px;
+    font-size: 13.5px;
   }
-  .task-mock__param .p-label{ color: var(--color-text-muted); font-size:12.5px; margin-bottom:3px; }
+  .task-mock__param .p-label{ color: var(--color-text-muted); font-size:12px; margin-bottom:2px; }
   .task-mock__param .p-val{ font-weight:600; }
 
   .task-mock__block{
@@ -815,91 +822,92 @@
     box-shadow: var(--shadow-md);
     overflow:hidden;
   }
-  .task-detail__top{ padding: var(--space-5) var(--space-6) 0; }
+  .task-detail__top{ padding: var(--space-4) var(--space-5) 0; }
   .status-pill{
     display:inline-flex;
     align-items:center;
     gap:6px;
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: 999px;
     background: var(--color-doczilla-pink);
     color:#fff;
-    font-size:13px;
+    font-size:12.5px;
     font-weight:700;
   }
-  .status-pill svg{ width:13px; height:13px; stroke:#fff; }
+  .status-pill svg{ width:12px; height:12px; stroke:#fff; }
   .task-detail__breadcrumb{
-    padding: var(--space-4) var(--space-6) 0;
-    font-size:13px;
+    padding: var(--space-3) var(--space-5) 0;
+    font-size:12.5px;
     color: var(--color-text-muted);
   }
   .task-detail__title{
-    padding: var(--space-2) var(--space-6) var(--space-5);
+    padding: var(--space-1) var(--space-5) var(--space-4);
     display:flex;
     align-items:flex-start;
-    gap:10px;
-    font-size:18.5px;
+    gap:8px;
+    font-size:16.5px;
     font-weight:700;
-    line-height:1.35;
+    line-height:1.3;
     border-bottom: 1px solid var(--color-border);
   }
-  .task-detail__title svg{ width:20px; height:20px; stroke: var(--color-text-muted); flex-shrink:0; margin-top:2px; }
+  .task-detail__title svg{ width:18px; height:18px; stroke: var(--color-text-muted); flex-shrink:0; margin-top:1px; }
   .task-detail__meta{
-    padding: var(--space-5) var(--space-6);
+    padding: var(--space-4) var(--space-5);
     display:flex;
     flex-direction:column;
-    gap: var(--space-3);
+    gap: var(--space-2);
     border-bottom: 1px solid var(--color-border);
   }
-  .task-detail__meta-row{ display:flex; gap: var(--space-4); font-size:14px; }
-  .task-detail__meta-row .label{ flex:0 0 130px; color: var(--color-text-muted); }
+  .task-detail__meta-row{ display:flex; gap: var(--space-4); font-size:13.5px; }
+  .task-detail__meta-row .label{ flex:0 0 120px; color: var(--color-text-muted); }
   .task-detail__meta-row .value{ font-weight:600; }
   .task-detail__section{
-    padding: var(--space-5) var(--space-6);
+    padding: var(--space-4) var(--space-5);
     border-bottom: 1px solid var(--color-border);
   }
   .task-detail__section:last-child{ border-bottom:none; }
   .task-detail__section-label{
-    font-size:13px;
+    font-size:12.5px;
     font-weight:700;
     color: var(--color-text-muted);
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-3);
   }
   .task-detail__desc-lead{
+    font-size:14.5px;
     font-weight:700;
     color: var(--color-accent-ink);
-    margin-bottom: var(--space-2);
+    margin-bottom: 4px;
   }
   .task-detail__desc-text{
-    font-size:14.5px;
+    font-size:14px;
     color: var(--color-text-secondary);
-    line-height:1.55;
-    margin-bottom: var(--space-4);
+    line-height:1.5;
+    margin-bottom: var(--space-3);
   }
   .task-detail__desc-text:last-child{ margin-bottom:0; }
-  .task-detail__steps{ display:flex; flex-direction:column; gap: var(--space-3); }
+  .task-detail__steps{ display:flex; flex-direction:column; gap: var(--space-2); }
   .task-detail__steps li{
     display:flex;
     align-items:flex-start;
-    gap:10px;
-    font-size:14px;
-    line-height:1.5;
+    gap:8px;
+    font-size:13.5px;
+    line-height:1.45;
     color: var(--color-text-secondary);
   }
-  .task-detail__steps li svg{ width:17px; height:17px; flex-shrink:0; margin-top:1px; }
+  .task-detail__steps li svg{ width:16px; height:16px; flex-shrink:0; margin-top:1px; }
   .task-detail__steps li.is-positive svg{ stroke: var(--color-success); }
   .task-detail__steps li.is-warning svg{ stroke: var(--color-warning); }
   .task-detail__doc{
     display:flex;
     align-items:center;
-    gap:10px;
-    padding: var(--space-3) var(--space-4);
+    gap:8px;
+    padding: var(--space-2) var(--space-3);
     background: var(--color-bg-alt);
     border-radius: var(--radius-sm);
-    font-size:14px;
+    font-size:13.5px;
     font-weight:600;
   }
-  .task-detail__doc svg{ width:17px; height:17px; stroke: var(--color-accent); flex-shrink:0; }
+  .task-detail__doc svg{ width:16px; height:16px; stroke: var(--color-accent); flex-shrink:0; }
   .task-detail__doc .tag{ margin-left:auto; }
 
   .mock-label{
@@ -923,11 +931,14 @@
     padding: var(--space-6);
     border: 1px solid var(--color-border);
     background: var(--color-surface);
-    transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+    transition: opacity .25s var(--ease), filter .25s var(--ease);
   }
-  .split-card.is-active{
-    box-shadow: 0 0 0 3px var(--color-accent-soft);
-    border-color: var(--color-accent-soft-border);
+  .dim-inactive [data-branch]{
+    transition: opacity .25s var(--ease), filter .25s var(--ease);
+  }
+  .dim-inactive [data-branch]:not(.is-active){
+    opacity: .45;
+    filter: saturate(.65);
   }
   .split-card__head{
     display:flex;
@@ -1246,6 +1257,53 @@
   .to-top svg{ width:18px; height:18px; stroke: var(--color-text-secondary); }
 
   /* ============================================================
+     ЛАЙТБОКС ДЛЯ СКРИНШОТОВ
+     ============================================================ */
+  .media-placeholder__frame img,
+  .branch-media__frame img{
+    cursor: zoom-in;
+    transition: opacity .15s var(--ease);
+  }
+  .media-placeholder__frame img:hover,
+  .branch-media__frame img:hover{
+    opacity: 0.9;
+  }
+  .lightbox{
+    position: fixed;
+    inset: 0;
+    background: rgba(15,15,26,0.84);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 56px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s var(--ease), visibility .2s var(--ease);
+  }
+  .lightbox.is-open{ opacity:1; visibility:visible; }
+  .lightbox img{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    cursor: zoom-out;
+  }
+  .lightbox__close{
+    position: absolute;
+    top: 20px; right: 24px;
+    width: 44px; height:44px;
+    border-radius:50%;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.24);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    transition: background .15s var(--ease);
+  }
+  .lightbox__close:hover{ background: rgba(255,255,255,0.22); }
+  .lightbox__close svg{ width:20px; height:20px; stroke:#fff; }
+
+  /* ============================================================
      REVEAL-АНИМАЦИЯ
      ============================================================ */
   .reveal{
@@ -1529,6 +1587,8 @@
         <div class="step-card reveal" style="--i:2"><span class="num">3</span><p>Можно ли вносить изменения?</p></div>
       </div>
 
+      <div class="flow-connector reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><use href="#icon-arrow-down"/></svg></div>
+
       <div class="fork reveal-group">
         <div class="fork-branch fork-branch--positive reveal" style="--i:0">
           <div class="fork-branch__title"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-check"/></svg>Можно вносить правки</div>
@@ -1544,13 +1604,15 @@
         </div>
       </div>
 
-      <div class="checklist-row reveal-group">
-        <div class="card reveal" style="--i:0"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-check"/></svg>Какая информация особенно важна</div>
-        <div class="card reveal" style="--i:1"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-check"/></svg>Можно ли публично упоминать сотрудничество</div>
-        <div class="card reveal" style="--i:2"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-check"/></svg>Срок действия NDA</div>
+      <div class="flow-connector reveal" style="margin-top: var(--space-5)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><use href="#icon-arrow-down"/></svg></div>
+
+      <div class="step-cards reveal-group">
+        <div class="step-card reveal" style="--i:0"><span class="num">4</span><p>Какая информация особенно важна?</p></div>
+        <div class="step-card reveal" style="--i:1"><span class="num">5</span><p>Можно ли публично упоминать сотрудничество?</p></div>
+        <div class="step-card reveal" style="--i:2"><span class="num">6</span><p>Какой срок действия NDA?</p></div>
       </div>
 
-      <p class="mock-label reveal" style="margin-top: var(--space-7)">Макет постановки задачи</p>
+      <p class="mock-label reveal" style="margin-top: var(--space-3)">Макет постановки задачи</p>
       <div class="task-detail reveal">
         <div class="task-detail__top">
           <span class="status-pill">
@@ -1779,13 +1841,13 @@
     <div class="decision-center reveal">
       <div class="q">Можно уверенно ответить без профессионального суждения?</div>
       <div class="arrow-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><use href="#icon-arrow-down"/></svg></div>
-      <div class="decision-outcomes">
-        <div class="decision-outcome decision-outcome--yes"><span>ДА</span>AI отвечает</div>
-        <div class="decision-outcome decision-outcome--no"><span>НЕТ</span>AI + юрист</div>
+      <div class="decision-outcomes dim-inactive" data-tree="consult-tree">
+        <div class="decision-outcome decision-outcome--yes is-active" data-branch="ai"><span>ДА</span>AI отвечает</div>
+        <div class="decision-outcome decision-outcome--no" data-branch="human"><span>НЕТ</span>AI + юрист</div>
       </div>
     </div>
 
-    <div class="split reveal-group" data-tree="consult-tree">
+    <div class="split reveal-group dim-inactive" data-tree="consult-tree">
       <div class="split-card split-card--ai is-active reveal" data-branch="ai" style="--i:0">
         <div class="split-card__head">
           <svg viewBox="0 0 24 24" fill="none"><use href="#icon-check"/></svg>
@@ -2181,8 +2243,8 @@
   /* -------- Переключатели веток сценариев -------- */
   document.querySelectorAll('.branch-toggle').forEach(function(toggle){
     var treeId = toggle.dataset.tree;
-    var panelsWrap = document.querySelector('.branch-panels[data-tree="' + treeId + '"], .split[data-tree="' + treeId + '"]');
-    if(!panelsWrap) return;
+    var panelsWraps = document.querySelectorAll('.branch-panels[data-tree="' + treeId + '"], .split[data-tree="' + treeId + '"], .decision-outcomes[data-tree="' + treeId + '"]');
+    if(!panelsWraps.length) return;
 
     toggle.querySelectorAll('.toggle-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
@@ -2192,11 +2254,54 @@
           b.classList.toggle('is-active', b === btn);
         });
 
-        panelsWrap.querySelectorAll('[data-branch]').forEach(function(panel){
-          panel.classList.toggle('is-active', panel.dataset.branch === branch);
+        panelsWraps.forEach(function(wrap){
+          wrap.querySelectorAll('[data-branch]').forEach(function(panel){
+            panel.classList.toggle('is-active', panel.dataset.branch === branch);
+          });
         });
       });
     });
+  });
+
+  /* -------- Лайтбокс для скриншотов -------- */
+  var lightbox = document.createElement('div');
+  lightbox.className = 'lightbox';
+  lightbox.innerHTML = '<button class="lightbox__close" aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><use href="#icon-x"/></svg></button><img alt="">';
+  document.body.appendChild(lightbox);
+  var lbImg = lightbox.querySelector('img');
+  var lbClose = lightbox.querySelector('.lightbox__close');
+
+  function openLightbox(src, alt){
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.media-placeholder__frame img, .branch-media__frame img').forEach(function(img){
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', 'Увеличить изображение');
+    img.addEventListener('click', function(){ openLightbox(img.src, img.alt); });
+    img.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        openLightbox(img.src, img.alt);
+      }
+    });
+  });
+
+  lightbox.addEventListener('click', function(e){
+    if(e.target === lightbox || e.target === lbImg || lbClose.contains(e.target)){
+      closeLightbox();
+    }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLightbox();
   });
 })();
 </script>
