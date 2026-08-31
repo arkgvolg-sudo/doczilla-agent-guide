@@ -12,7 +12,7 @@
      ============================================================ */
   :root{
     --color-bg: #FAFAFA;
-    --color-bg-alt: #F3F3F8;
+    --color-bg-alt: #E8E8F3;
     --color-surface: #FFFFFF;
     --color-border: #E4E4EC;
     --color-border-soft: #ECECF2;
@@ -525,6 +525,14 @@
     color: var(--color-text);
     box-shadow: var(--shadow-sm);
   }
+  .toggle-btn:not(.is-active){
+    animation: toggle-invite 1.7s ease-out infinite;
+  }
+  @keyframes toggle-invite{
+    0%   { box-shadow: 0 0 0 0 rgba(255,107,144,0.55); background: rgba(255,107,144,0.12); }
+    70%  { box-shadow: 0 0 0 12px rgba(255,107,144,0); background: transparent; }
+    100% { box-shadow: 0 0 0 0 rgba(255,107,144,0); background: transparent; }
+  }
 
   /* ============================================================
      ДЕРЕВО РЕШЕНИЙ / ВЕТКИ
@@ -798,6 +806,110 @@
   .task-mock__block--ai .p-label{ color: var(--color-accent-ink); }
 
   /* ============================================================
+     МАКЕТ СОЗДАННОЙ ЗАДАЧИ (детальная карточка)
+     ============================================================ */
+  .task-detail{
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow:hidden;
+  }
+  .task-detail__top{ padding: var(--space-5) var(--space-6) 0; }
+  .status-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--color-doczilla-pink);
+    color:#fff;
+    font-size:13px;
+    font-weight:700;
+  }
+  .status-pill svg{ width:13px; height:13px; stroke:#fff; }
+  .task-detail__breadcrumb{
+    padding: var(--space-4) var(--space-6) 0;
+    font-size:13px;
+    color: var(--color-text-muted);
+  }
+  .task-detail__title{
+    padding: var(--space-2) var(--space-6) var(--space-5);
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-size:18.5px;
+    font-weight:700;
+    line-height:1.35;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .task-detail__title svg{ width:20px; height:20px; stroke: var(--color-text-muted); flex-shrink:0; margin-top:2px; }
+  .task-detail__meta{
+    padding: var(--space-5) var(--space-6);
+    display:flex;
+    flex-direction:column;
+    gap: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .task-detail__meta-row{ display:flex; gap: var(--space-4); font-size:14px; }
+  .task-detail__meta-row .label{ flex:0 0 130px; color: var(--color-text-muted); }
+  .task-detail__meta-row .value{ font-weight:600; }
+  .task-detail__section{
+    padding: var(--space-5) var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .task-detail__section:last-child{ border-bottom:none; }
+  .task-detail__section-label{
+    font-size:13px;
+    font-weight:700;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+  }
+  .task-detail__desc-lead{
+    font-weight:700;
+    color: var(--color-accent-ink);
+    margin-bottom: var(--space-2);
+  }
+  .task-detail__desc-text{
+    font-size:14.5px;
+    color: var(--color-text-secondary);
+    line-height:1.55;
+    margin-bottom: var(--space-4);
+  }
+  .task-detail__desc-text:last-child{ margin-bottom:0; }
+  .task-detail__steps{ display:flex; flex-direction:column; gap: var(--space-3); }
+  .task-detail__steps li{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-size:14px;
+    line-height:1.5;
+    color: var(--color-text-secondary);
+  }
+  .task-detail__steps li svg{ width:17px; height:17px; flex-shrink:0; margin-top:1px; }
+  .task-detail__steps li.is-positive svg{ stroke: var(--color-success); }
+  .task-detail__steps li.is-warning svg{ stroke: var(--color-warning); }
+  .task-detail__doc{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-sm);
+    font-size:14px;
+    font-weight:600;
+  }
+  .task-detail__doc svg{ width:17px; height:17px; stroke: var(--color-accent); flex-shrink:0; }
+  .task-detail__doc .tag{ margin-left:auto; }
+
+  .mock-label{
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+  }
+
+  /* ============================================================
      50/50 КОНСУЛЬТАЦИИ
      ============================================================ */
   .split{
@@ -918,6 +1030,12 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--space-5);
     align-items:start;
+  }
+  .routing-media-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+    margin-top: var(--space-7);
   }
   .routing-card{
     background: var(--color-surface);
@@ -1152,6 +1270,7 @@
     .branch-panels{ grid-template-columns: 1fr; }
     .split{ grid-template-columns: 1fr; }
     .routing-grid{ grid-template-columns: 1fr; }
+    .routing-media-grid{ grid-template-columns: 1fr; }
     .rules-grid{ grid-template-columns: repeat(2, 1fr); }
     .final-grid{ grid-template-columns: repeat(2, 1fr); }
     .step-cards{ grid-template-columns: 1fr; }
@@ -1187,6 +1306,7 @@
   <symbol id="icon-chat" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v9A1.5 1.5 0 0 1 18.5 16H9l-4 4v-4H5.5A1.5 1.5 0 0 1 4 14.5v-9z"/><path d="M9 8.5h6M9 11.5h4"/></symbol>
   <symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
   <symbol id="icon-arrow-down" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M6 13l6 6 6-6"/></symbol>
+  <symbol id="icon-chevron-down" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></symbol>
   <symbol id="icon-doc" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 15.5h6"/></symbol>
   <symbol id="icon-info" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 8v.01"/></symbol>
   <symbol id="icon-image" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.7"/><path d="M20 16l-5-5-9 9"/></symbol>
@@ -1394,15 +1514,6 @@
       <span>Типовой NDA пользователь может заполнить самостоятельно — участие юриста не требуется.</span>
     </div>
 
-    <!-- ЗАМЕНИТЬ НА GIF: сценарий выдачи типового NDA -->
-    <div class="media-placeholder media-placeholder--filled reveal" style="margin-top: var(--space-7)">
-      <div class="media-placeholder__bar"><span></span><span></span><span></span></div>
-      <div class="media-placeholder__frame">
-        <img src="assets/nda-issue.png" alt="Сценарий выдачи типового NDA">
-      </div>
-    </div>
-    <!-- Чтобы заменить placeholder: вставьте <img src="demo.gif" alt=""> внутрь .media-placeholder__frame -->
-
     <!-- ============================================================
          СЛАЙД 4 — ПРОВЕРКА NDA КОНТРАГЕНТА
          ============================================================ -->
@@ -1439,12 +1550,28 @@
         <div class="card reveal" style="--i:2"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-check"/></svg>Срок действия NDA</div>
       </div>
 
-      <div class="task-mock reveal" style="margin-top: var(--space-7)">
-        <div class="task-mock__top">
-          <span class="task-mock__title">Проверка NDA</span>
-          <span class="task-mock__due">Срок проверки: до …</span>
+      <p class="mock-label reveal" style="margin-top: var(--space-7)">Макет постановки задачи</p>
+      <div class="task-detail reveal">
+        <div class="task-detail__top">
+          <span class="status-pill">
+            В работе
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><use href="#icon-chevron-down"/></svg>
+          </span>
         </div>
-        <div class="task-mock__body">
+        <div class="task-detail__breadcrumb">Проверка NDA</div>
+        <div class="task-detail__title">
+          <svg viewBox="0 0 24 24" fill="none"><use href="#icon-doc"/></svg>
+          Поступил запрос от команды на проверку NDA контрагента
+        </div>
+        <div class="task-detail__meta">
+          <div class="task-detail__meta-row"><span class="label">Автор</span><span class="value">Пользователь</span></div>
+          <div class="task-detail__meta-row"><span class="label">Исполнитель</span><span class="value">Юрист — назначается автоматически</span></div>
+          <div class="task-detail__meta-row"><span class="label">Дедлайн</span><span class="value">до …</span></div>
+        </div>
+        <div class="task-detail__section">
+          <div class="task-detail__section-label">Описание</div>
+          <p class="task-detail__desc-lead">Проверка NDA</p>
+          <p class="task-detail__desc-text">Прошу проверить NDA контрагента.</p>
           <div class="task-mock__params">
             <div class="task-mock__param"><div class="p-label">Параметр</div><div class="p-val">Конфиденциальность</div></div>
             <div class="task-mock__param"><div class="p-label">Параметр</div><div class="p-val">Работа с документом</div></div>
@@ -1453,16 +1580,28 @@
             <div class="task-mock__param" style="grid-column: 1 / -1"><div class="p-label">Параметр</div><div class="p-val">Срок действия NDA</div></div>
           </div>
         </div>
-      </div>
-
-      <!-- ЗАМЕНИТЬ НА GIF: создание задачи по NDA -->
-      <div class="media-placeholder media-placeholder--filled reveal" style="margin-top: var(--space-6)">
-        <div class="media-placeholder__bar"><span></span><span></span><span></span></div>
-        <div class="media-placeholder__frame">
-          <img src="assets/nda-task.png" alt="Создание задачи по проверке NDA">
+        <div class="task-detail__section">
+          <div class="task-detail__section-label">Следующие шаги</div>
+          <ul class="task-detail__steps">
+            <li class="is-positive">
+              <svg viewBox="0 0 24 24" fill="none"><use href="#icon-check"/></svg>
+              <span>Проверит NDA контрагента и подсветит риски</span>
+            </li>
+            <li class="is-warning">
+              <svg viewBox="0 0 24 24" fill="none"><use href="#icon-info"/></svg>
+              <span>При необходимости подготовит правки или протокол разногласий</span>
+            </li>
+          </ul>
+        </div>
+        <div class="task-detail__section">
+          <div class="task-detail__section-label">Документы</div>
+          <div class="task-detail__doc">
+            <svg viewBox="0 0 24 24" fill="none"><use href="#icon-doc"/></svg>
+            <span>NDA — форма контрагента</span>
+            <span class="badge badge--neutral tag">Основной</span>
+          </div>
         </div>
       </div>
-      <!-- Чтобы заменить placeholder: вставьте <img src="demo.gif" alt=""> внутрь .media-placeholder__frame -->
     </div>
   </div>
 </section>
@@ -1484,28 +1623,46 @@
     </div>
 
     <div class="branch-panels reveal-group" data-tree="contract-tree">
-      <div class="branch-panel is-active reveal" data-branch="draft" style="--i:0">
-        <div class="branch-panel__head">
-          <h4>Подготовить договор с нуля</h4>
+      <div class="branch-slot reveal" style="--i:0">
+        <div class="branch-panel is-active" data-branch="draft">
+          <div class="branch-panel__head">
+            <h4>Подготовить договор с нуля</h4>
+          </div>
+          <ul class="branch-steps">
+            <li>Пользователь описывает, какой договор нужен</li>
+            <li>AI ищет подходящий опубликованный шаблон</li>
+            <li class="is-outcome no-task">Шаблон найден → выдаёт ссылку, юрист не подключается</li>
+            <li class="is-outcome">Шаблона нет → определяет тип документа, назначает юриста, создаёт задачу «Составить договор»</li>
+          </ul>
         </div>
-        <ul class="branch-steps">
-          <li>Пользователь описывает, какой договор нужен</li>
-          <li>AI ищет подходящий опубликованный шаблон</li>
-          <li class="is-outcome no-task">Шаблон найден → выдаёт ссылку, юрист не подключается</li>
-          <li class="is-outcome">Шаблона нет → определяет тип документа, назначает юриста, создаёт задачу «Составить договор»</li>
-        </ul>
+
+        <div class="branch-media" data-branch="check">
+          <div class="branch-media__bar"><span></span><span></span><span></span></div>
+          <div class="branch-media__frame">
+            <img src="assets/contract-check-example.png" alt="Пример: проверка формы договора контрагента">
+          </div>
+        </div>
       </div>
 
-      <div class="branch-panel reveal" data-branch="check" style="--i:1">
-        <div class="branch-panel__head">
-          <h4>Проверить форму контрагента</h4>
-          <span class="badge badge--warning">Подробнее ниже</span>
+      <div class="branch-slot reveal" style="--i:1">
+        <div class="branch-media is-active" data-branch="draft">
+          <div class="branch-media__bar"><span></span><span></span><span></span></div>
+          <div class="branch-media__frame">
+            <img src="assets/contract-draft-example.png" alt="Пример: подготовка договора с нуля">
+          </div>
         </div>
-        <ul class="branch-steps">
-          <li>Пользователь загружает договор контрагента</li>
-          <li>AI собирает параметры проверки</li>
-          <li class="is-outcome">Определяет ответственного юриста и создаёт задачу</li>
-        </ul>
+
+        <div class="branch-panel" data-branch="check">
+          <div class="branch-panel__head">
+            <h4>Проверить форму контрагента</h4>
+            <span class="badge badge--warning">Подробнее ниже</span>
+          </div>
+          <ul class="branch-steps">
+            <li>Пользователь загружает договор контрагента</li>
+            <li>AI собирает параметры проверки</li>
+            <li class="is-outcome">Определяет ответственного юриста и создаёт задачу</li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -1513,15 +1670,6 @@
       <svg viewBox="0 0 24 24" fill="none"><use href="#icon-info"/></svg>
       <span>Сначала используем self-service. Юрист подключается только тогда, когда подходящего типового шаблона нет.</span>
     </div>
-
-    <!-- ЗАМЕНИТЬ НА GIF: поиск и выдача типового договора -->
-    <div class="media-placeholder media-placeholder--filled reveal" style="margin-top: var(--space-7)">
-      <div class="media-placeholder__bar"><span></span><span></span><span></span></div>
-      <div class="media-placeholder__frame">
-        <img src="assets/contract-search.png" alt="Поиск и выдача типового договора">
-      </div>
-    </div>
-    <!-- Чтобы заменить placeholder: вставьте <img src="demo.gif" alt=""> внутрь .media-placeholder__frame -->
 
     <!-- ============================================================
          СЛАЙД 6 — ПРОВЕРКА ДОГОВОРА КОНТРАГЕНТА
@@ -1558,14 +1706,56 @@
         <div class="card reveal" style="--i:2"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-check"/></svg>Создаёт задачу «Проверка договора»</div>
       </div>
 
-      <!-- ЗАМЕНИТЬ НА GIF: проверка формы контрагента -->
-      <div class="media-placeholder media-placeholder--filled reveal" style="margin-top: var(--space-7)">
-        <div class="media-placeholder__bar"><span></span><span></span><span></span></div>
-        <div class="media-placeholder__frame">
-          <img src="assets/contract-check.png" alt="Проверка формы договора контрагента">
+      <p class="mock-label reveal" style="margin-top: var(--space-7)">Макет постановки задачи</p>
+      <div class="task-detail reveal">
+        <div class="task-detail__top">
+          <span class="status-pill">
+            В ожидании
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><use href="#icon-chevron-down"/></svg>
+          </span>
+        </div>
+        <div class="task-detail__breadcrumb">Проверка договора</div>
+        <div class="task-detail__title">
+          <svg viewBox="0 0 24 24" fill="none"><use href="#icon-doc"/></svg>
+          Поступил запрос от команды на проверку договора контрагента
+        </div>
+        <div class="task-detail__meta">
+          <div class="task-detail__meta-row"><span class="label">Автор</span><span class="value">Пользователь</span></div>
+          <div class="task-detail__meta-row"><span class="label">Исполнитель</span><span class="value">Юрист — назначается автоматически</span></div>
+          <div class="task-detail__meta-row"><span class="label">Дедлайн</span><span class="value">до …</span></div>
+        </div>
+        <div class="task-detail__section">
+          <div class="task-detail__section-label">Описание</div>
+          <p class="task-detail__desc-lead">Проверка договора</p>
+          <p class="task-detail__desc-text">Прошу проверить договор контрагента.</p>
+          <div class="task-mock__params">
+            <div class="task-mock__param"><div class="p-label">Параметр</div><div class="p-val">Тип документа</div></div>
+            <div class="task-mock__param"><div class="p-label">Параметр</div><div class="p-val">Контрагент</div></div>
+            <div class="task-mock__param" style="grid-column: 1 / -1"><div class="p-label">Параметр</div><div class="p-val">Работа с документом</div></div>
+          </div>
+        </div>
+        <div class="task-detail__section">
+          <div class="task-detail__section-label">Следующие шаги</div>
+          <ul class="task-detail__steps">
+            <li class="is-positive">
+              <svg viewBox="0 0 24 24" fill="none"><use href="#icon-check"/></svg>
+              <span>Проверит договор контрагента и оценит риски</span>
+            </li>
+            <li class="is-warning">
+              <svg viewBox="0 0 24 24" fill="none"><use href="#icon-info"/></svg>
+              <span>При необходимости подготовит правки или протокол разногласий</span>
+            </li>
+          </ul>
+        </div>
+        <div class="task-detail__section">
+          <div class="task-detail__section-label">Документы</div>
+          <div class="task-detail__doc">
+            <svg viewBox="0 0 24 24" fill="none"><use href="#icon-doc"/></svg>
+            <span>Договор — форма контрагента</span>
+            <span class="badge badge--neutral tag">Основной</span>
+          </div>
         </div>
       </div>
-      <!-- Чтобы заменить placeholder: вставьте <img src="demo.gif" alt=""> внутрь .media-placeholder__frame -->
     </div>
   </div>
 </section>
@@ -1754,6 +1944,21 @@
         <p class="funnel-note">AI проверяет полный список подходящих специалистов и не останавливается на первом совпадении.</p>
       </div>
     </div>
+
+    <div class="routing-media-grid reveal-group">
+      <div class="media-placeholder media-placeholder--filled reveal" style="--i:0">
+        <div class="media-placeholder__bar"><span></span><span></span><span></span></div>
+        <div class="media-placeholder__frame">
+          <img src="assets/routing-example-a.png" alt="Пример: выбор юриста по загрузке при подготовке договора">
+        </div>
+      </div>
+      <div class="media-placeholder media-placeholder--filled reveal" style="--i:1">
+        <div class="media-placeholder__bar"><span></span><span></span><span></span></div>
+        <div class="media-placeholder__frame">
+          <img src="assets/routing-example-b.png" alt="Пример: приоритет критериев при проверке документа">
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1794,6 +1999,13 @@
     <div class="callout reveal" style="margin-top: var(--space-4)">
       <svg viewBox="0 0 24 24" fill="none"><use href="#icon-info"/></svg>
       <span>Для консультаций: ответственный юрист впоследствии может установить иной срок выполнения.</span>
+    </div>
+
+    <div class="media-placeholder media-placeholder--filled reveal" style="margin-top: var(--space-7)">
+      <div class="media-placeholder__bar"><span></span><span></span><span></span></div>
+      <div class="media-placeholder__frame">
+        <img src="assets/sla-example.png" alt="Пример: расчёт дедлайна по SLA">
+      </div>
     </div>
   </div>
 </section>
