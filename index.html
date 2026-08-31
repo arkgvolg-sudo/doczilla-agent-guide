@@ -762,8 +762,9 @@
     align-items:center;
     justify-content:space-between;
     gap: var(--space-4);
-    background: var(--color-bg-alt);
+    background: var(--color-accent);
   }
+  .task-mock__top .task-mock__title{ color:#fff; }
   .task-mock__title{ font-size:16px; font-weight:700; }
   .task-mock__due{
     font-family: var(--font-mono);
@@ -809,7 +810,7 @@
     color: var(--color-text);
   }
   .task-mock__block--user{ background: var(--color-surface); border: 1px dashed var(--color-border); }
-  .task-mock__block--ai{ background: var(--color-accent-soft); border: 1px solid var(--color-accent-soft-border); }
+  .task-mock__block--ai{ background: rgba(79,70,229,0.10); border: 1px solid rgba(79,70,229,0.22); border-left: 3px solid var(--color-accent); }
   .task-mock__block--ai .p-label{ color: var(--color-accent-ink); }
 
   /* ============================================================
