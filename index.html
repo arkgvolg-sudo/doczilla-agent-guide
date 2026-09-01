@@ -1271,6 +1271,88 @@
   .rule-card p{ font-size:13.5px; color: var(--color-text-secondary); line-height:1.5; }
 
   /* ============================================================
+     ДАШБОРДЫ
+     ============================================================ */
+  .capability-cards{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+    margin-top: var(--space-7);
+  }
+  .capability-card{
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+  }
+  .capability-card .icon-badge{
+    width:40px; height:40px;
+    border-radius: var(--radius-sm);
+    background: var(--color-accent-soft);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom: var(--space-4);
+  }
+  .capability-card .icon-badge svg{ width:20px; height:20px; stroke: var(--color-accent); }
+  .capability-card h3{ font-size:18px; }
+  .capability-card p{
+    margin-top: var(--space-2);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .ask-block{
+    margin-top: var(--space-5);
+    background: var(--color-accent-soft);
+    border: 1px solid var(--color-accent-soft-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+  }
+  .ask-block__label{
+    font-size:13px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    color: var(--color-accent-ink);
+    margin-bottom: var(--space-3);
+  }
+  .ask-examples{
+    display:flex;
+    flex-wrap:wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+  .ask-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-accent-soft-border);
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size:14.5px;
+    font-weight:600;
+    color: var(--color-text);
+  }
+  .ask-chip svg{ width:15px; height:15px; stroke: var(--color-accent); flex-shrink:0; }
+  .ask-block p{ font-size:15px; line-height:1.6; color: var(--color-text-secondary); }
+
+  .dashboard-gallery{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+    margin-top: var(--space-8);
+  }
+  .dashboard-shot{ margin:0; }
+  .dashboard-shot figcaption{
+    margin-top: var(--space-3);
+    font-size:14px;
+    color: var(--color-text-secondary);
+    text-align:center;
+  }
+
+  /* ============================================================
      ФИНАЛЬНЫЙ БЛОК
      ============================================================ */
   .final-grid{
@@ -1413,6 +1495,8 @@
     .sla-rules{ grid-template-columns: 1fr; }
     .principles-grid{ grid-template-columns: repeat(2,1fr); }
     .template-chips{ grid-template-columns: 1fr; }
+    .capability-cards{ grid-template-columns: 1fr; }
+    .dashboard-gallery{ grid-template-columns: 1fr; }
     .nav-links{ display:none; }
   }
   @media (max-width: 720px){
@@ -1452,6 +1536,8 @@
   <symbol id="icon-bolt" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><path d="M12.5 10.5L9.5 14.5h2.3L11 17.5l3.2-4.2h-2.2l.5-2.8z"/></symbol>
   <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.2 2"/></symbol>
   <symbol id="icon-list-check" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 6.5l1.3 1.3L8 5.5"/><path d="M11 6.5h9"/><path d="M4.5 12l1.3 1.3L8 11"/><path d="M11 12h9"/><path d="M4.5 17.5l1.3 1.3L8 16.5"/><path d="M11 17.5h9"/></symbol>
+  <symbol id="icon-chart-bar" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M9.5 20V4M15 20v-7M20 20V8"/></symbol>
+  <symbol id="icon-alert" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5l8.5 14.5H3.5L12 4.5z"/><path d="M12 10.5v4"/><circle cx="12" cy="17.3" r="0.9" fill="currentColor" stroke="none"/></symbol>
   <symbol id="icon-context" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8.5"/><path d="M20 4v4.5h-4.5"/><path d="M20 12a8 8 0 0 1-13.7 5.7L4 15.5"/><path d="M4 20v-4.5h4.5"/></symbol>
   <symbol id="icon-ai-human" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="4.2"/><circle cx="15" cy="15" r="4.2"/><path d="M9 9l6 6"/></symbol>
   <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></symbol>
@@ -1476,6 +1562,7 @@
       <a href="#routing" data-nav="routing">Маршрутизация</a>
       <a href="#sla" data-nav="sla">SLA</a>
       <a href="#rules" data-nav="rules">Правила</a>
+      <a href="#dashboards" data-nav="dashboards">Дашборды</a>
     </div>
   </div>
 </nav>
@@ -1531,7 +1618,7 @@
      ============================================================ -->
 <section class="section" id="overview">
   <div class="container">
-    <div class="slide-index reveal">Слайд 02 / 12</div>
+    <div class="slide-index reveal">Слайд 02 / 13</div>
     <div class="section-head reveal">
       <span class="kicker">Как это устроено</span>
       <h2>Как работает агент</h2>
@@ -1573,7 +1660,7 @@
      ============================================================ -->
 <section class="section section--alt" id="nda">
   <div class="container">
-    <div class="slide-index reveal">Слайд 03 / 12</div>
+    <div class="slide-index reveal">Слайд 03 / 13</div>
     <div class="section-head reveal">
       <span class="kicker">Раздел · NDA</span>
       <h2>NDA: от типового шаблона до проверки формы контрагента</h2>
@@ -1748,7 +1835,7 @@
      ============================================================ -->
 <section class="section" id="contracts">
   <div class="container">
-    <div class="slide-index reveal">Слайд 05 / 12</div>
+    <div class="slide-index reveal">Слайд 05 / 13</div>
     <div class="section-head reveal">
       <span class="kicker">Раздел · Договоры</span>
       <h2>Договоры: типовой шаблон или работа юриста</h2>
@@ -1908,7 +1995,7 @@
      ============================================================ -->
 <section class="section section--alt" id="consultations">
   <div class="container">
-    <div class="slide-index reveal">Слайд 07 / 12</div>
+    <div class="slide-index reveal">Слайд 07 / 13</div>
     <div class="section-head reveal">
       <span class="kicker">Раздел · Консультации</span>
       <h2>Консультации: AI отвечает сам или подключает юриста</h2>
@@ -2038,7 +2125,7 @@
      ============================================================ -->
 <section class="section" id="routing">
   <div class="container">
-    <div class="slide-index reveal">Слайд 09 / 12</div>
+    <div class="slide-index reveal">Слайд 09 / 13</div>
     <div class="section-head reveal">
       <span class="kicker">Раздел · Маршрутизация</span>
       <h2>AI сам выбирает подходящего юриста</h2>
@@ -2110,7 +2197,7 @@
      ============================================================ -->
 <section class="section section--alt" id="sla">
   <div class="container">
-    <div class="slide-index reveal">Слайд 10 / 12</div>
+    <div class="slide-index reveal">Слайд 10 / 13</div>
     <div class="section-head reveal">
       <span class="kicker">Раздел · SLA</span>
       <h2>Сроки выполнения задач</h2>
@@ -2158,7 +2245,7 @@
      ============================================================ -->
 <section class="section" id="rules">
   <div class="container">
-    <div class="slide-index reveal">Слайд 11 / 12</div>
+    <div class="slide-index reveal">Слайд 11 / 13</div>
     <div class="section-head reveal">
       <span class="kicker">Раздел · Правила</span>
       <h2>Ключевые правила AI-агента</h2>
@@ -2216,10 +2303,88 @@
         <p>В сложных и рисковых консультациях AI готовит черновик, а юрист проверяет.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- ============================================================
-         СЛАЙД 12 — ЧТО В ИТОГЕ АВТОМАТИЗИРУЕТ АГЕНТ
-         ============================================================ -->
+<!-- ============================================================
+     СЛАЙД 12 — ДАШБОРДЫ
+     ============================================================ -->
+<section class="section section--alt" id="dashboards">
+  <div class="container">
+    <div class="slide-index reveal">Слайд 12 / 13</div>
+    <div class="section-head reveal">
+      <span class="kicker">Раздел · Дашборды</span>
+      <h2>Дашборды: аналитика без ручных отчётов</h2>
+    </div>
+
+    <div class="capability-cards reveal-group">
+      <div class="capability-card reveal" style="--i:0">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-chart-bar"/></svg></span>
+        <h3>Загрузка команды</h3>
+        <p>AI-агент анализирует задачи, сроки, статусы и распределение работы между сотрудниками, показывает текущую загрузку каждого участника и помогает быстро находить перегруженных специалистов.</p>
+      </div>
+      <div class="capability-card reveal" style="--i:1">
+        <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-alert"/></svg></span>
+        <h3>Контроль сроков и очередей</h3>
+        <p>Агент отслеживает задачи без движения, приближающиеся дедлайны, накопившиеся очереди и задержки на отдельных этапах.</p>
+      </div>
+    </div>
+
+    <div class="ask-block reveal">
+      <div class="ask-block__label">Достаточно спросить</div>
+      <div class="ask-examples">
+        <span class="ask-chip"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-chat"/></svg>«Покажи загрузку команды за месяц»</span>
+        <span class="ask-chip"><svg viewBox="0 0 24 24" fill="none"><use href="#icon-chat"/></svg>«Сравни количество закрытых задач по сотрудникам»</span>
+      </div>
+      <p>AI сам собирает данные и представляет их в виде понятных дашбордов, графиков и сводной аналитики.</p>
+    </div>
+
+    <div class="dashboard-gallery reveal-group">
+      <figure class="dashboard-shot reveal" style="--i:0">
+        <div class="media-placeholder media-placeholder--filled">
+          <div class="media-placeholder__bar"><span></span><span></span><span></span></div>
+          <div class="media-placeholder__frame">
+            <img src="assets/dashboard-overview.png" alt="Сводка по процессам и задачам: статусы, количество, период">
+          </div>
+        </div>
+        <figcaption>Сводка по процессам и задачам</figcaption>
+      </figure>
+      <figure class="dashboard-shot reveal" style="--i:1">
+        <div class="media-placeholder media-placeholder--filled">
+          <div class="media-placeholder__bar"><span></span><span></span><span></span></div>
+          <div class="media-placeholder__frame">
+            <img src="assets/dashboard-stale-tasks.png" alt="Топ-5 задач без движения более 30 дней">
+          </div>
+        </div>
+        <figcaption>Топ-5 задач без движения более 30 дней</figcaption>
+      </figure>
+      <figure class="dashboard-shot reveal" style="--i:2">
+        <div class="media-placeholder media-placeholder--filled">
+          <div class="media-placeholder__bar"><span></span><span></span><span></span></div>
+          <div class="media-placeholder__frame">
+            <img src="assets/dashboard-top-authors.png" alt="Активность по авторам запросов, топ-8">
+          </div>
+        </div>
+        <figcaption>Активность по авторам запросов</figcaption>
+      </figure>
+      <figure class="dashboard-shot reveal" style="--i:3">
+        <div class="media-placeholder media-placeholder--filled">
+          <div class="media-placeholder__bar"><span></span><span></span><span></span></div>
+          <div class="media-placeholder__frame">
+            <img src="assets/dashboard-top-directions.png" alt="Статусы задач исполнителей и топ направлений по количеству процессов">
+          </div>
+        </div>
+        <figcaption>Статусы задач и топ направлений</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     СЛАЙД 13 — ЧТО В ИТОГЕ АВТОМАТИЗИРУЕТ АГЕНТ
+     ============================================================ -->
+<section class="section" id="final-recap">
+  <div class="container">
     <div class="sub-block">
       <div class="sub-block-head reveal">
         <h3>Что в итоге автоматизирует агент</h3>
@@ -2306,7 +2471,7 @@
   document.querySelectorAll('.nav-links a').forEach(function(a){
     navLinkMap[a.dataset.nav] = a;
   });
-  var sections = ['overview','nda','contracts','consultations','routing','sla','rules']
+  var sections = ['overview','nda','contracts','consultations','routing','sla','rules','dashboards']
     .map(function(id){ return document.getElementById(id); })
     .filter(Boolean);
 
